@@ -41,6 +41,7 @@ public class Enemy : MonoBehaviour
         AssScores();
         Instantiate(_explosion, transform.position, Quaternion.identity);
         CreateHealItem();
+        AudioPlayer.Instance.PlayExplosion();
         Destroy(gameObject);
     }
 
@@ -65,9 +66,11 @@ public class Enemy : MonoBehaviour
     
     private void CreateHealItem()
     {
-        var random = Random.Range(GlobalSettings.PercentHealth, 100);
-
-        if (random <= GlobalSettings.PercentHealth)
+        var randomNumber = Random.Range(0, 100);
+        
+        Debug.Log("randomNumber = " + randomNumber);
+        
+        if (randomNumber <= GlobalSettings.PercentHealth)
         {
             Instantiate(_healthItem, transform.position, Quaternion.identity);
         }
@@ -89,6 +92,7 @@ public class Enemy : MonoBehaviour
             {
                 var missile = Instantiate(_missile, spawn.transform.position , Quaternion.identity);
                 missile.ChangeDirection();
+                AudioPlayer.Instance.PlayLaser();
             }
 
             yield return new WaitForSeconds(_fireRate);

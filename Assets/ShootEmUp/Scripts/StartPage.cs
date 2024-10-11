@@ -12,6 +12,7 @@ public class StartPage : MonoBehaviour
     private void Start()
     {
         _coroutine = StartCoroutine(FlashingMessage());
+        AudioPlayer.Instance.PlayMenu();
     }
 
     private void Update()

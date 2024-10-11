@@ -23,6 +23,7 @@ public class Spaceship : MonoBehaviour
         {
             Instantiate(_explosion, transform.position, Quaternion.identity);
             _gameOverPage.Show();
+            AudioPlayer.Instance.PlayExplosion();
             Destroy(gameObject);
         }
 
@@ -33,6 +34,7 @@ public class Spaceship : MonoBehaviour
     {
         _health++;
         PlayerPrefs.SetInt(GlobalStrings.HealthKey, _health);
+        AudioPlayer.Instance.PlayHealth();
 
         StartCoroutine(BlinkHeal());
     }
@@ -40,13 +42,14 @@ public class Spaceship : MonoBehaviour
     private void Start()
     {
         _health = GlobalSettings.MaximumHealth;
+        AudioPlayer.Instance.PlayGame();
     }
 
     private void Update()
     {
         AddForce();
 
-        if (Input.GetKey(KeyCode.Space) == true && _shootDelay >= 30)
+        if (_shootDelay >= 30) // Input.GetKey(KeyCode.Space) == true && 
         {
             Shoot();
         }
@@ -66,6 +69,7 @@ public class Spaceship : MonoBehaviour
     {
         _shootDelay = 0;
         Instantiate(_missle, _missleSpawn.position, Quaternion.identity);
+        AudioPlayer.Instance.PlayLaser();
     }
 
     private IEnumerator BlinkDamage()
