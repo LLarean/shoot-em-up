@@ -12,4 +12,7 @@
     public const string ScoresKey = "Scores";
     public const string HealthKey = "Health";
     public const string RecordKey = "Record";
+    
+    public const string NewRecord = "НОВЫЙ РЕКОРД";
+    public const string Lose = "ПОРАЖЕНИЕ";
 }
