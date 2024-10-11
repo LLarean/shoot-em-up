@@ -1,5 +1,7 @@
 ﻿public static class GlobalStrings
 {
+    public const string GameScene = "Game";
+    
     public const string Horizontal = "Horizontal";
     public const string Vertical = "Vertical";
     

@@ -1,28 +1,65 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class StartPage : MonoBehaviour
 {
-    [SerializeField] private Button _substrate;
-    [SerializeField] private TextMeshProUGUI _record;
-    [SerializeField] private Spaceship _spaceship;
-    [SerializeField] private Spawner _spawner;
-    [SerializeField] private GameObject _hud;
+    [SerializeField] private TextMeshProUGUI _message;
+
+    private Coroutine _coroutine;
 
     private void Start()
     {
-        var record = PlayerPrefs.GetInt(GlobalStrings.RecordKey, 0);
-        _record.text = $"{GlobalStrings.Record}{record}";
-        
-        _substrate.onClick.AddListener(StartGame);
+        _coroutine = StartCoroutine(FlashingMessage());
+    }
+
+    private void Update()
+    {
+        if (Input.anyKey != true) return;
+
+        StartGame();
     }
 
     private void StartGame()
     {
-        _spaceship.gameObject.SetActive(true);
-        _spawner.gameObject.SetActive(true);
-        _hud.gameObject.SetActive(true);
-        gameObject.SetActive(false);
+        if (_coroutine != null)
+        {
+            StopCoroutine(_coroutine);
+        }
+        
+        SceneManager.LoadScene(GlobalStrings.GameScene);
+    }
+    
+    private IEnumerator FlashingMessage()
+    {
+        Color tempColor;
+        int duration = 360;
+        float maximumAlpha = .5f;
+        float fadeStep = maximumAlpha / (duration / 2);
+        
+        while (true)
+        {
+            tempColor = _message.color;
+            tempColor.a = 0;
+            _message.color = tempColor;
+         
+            for (float i = 0; i < duration / 2; i++)
+            {
+                tempColor.a += fadeStep;
+                _message.color = tempColor;
+                yield return Time.deltaTime;
+            }
+            
+            tempColor.a = maximumAlpha;
+            _message.color = tempColor;
+            
+            for (float i = 0; i < duration / 2; i++)
+            {
+                tempColor.a -= fadeStep;
+                _message.color = tempColor;
+                yield return Time.deltaTime;
+            }
+        }
     }
 }
