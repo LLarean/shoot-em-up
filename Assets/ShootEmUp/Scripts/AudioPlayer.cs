@@ -21,10 +21,10 @@ public class AudioPlayer : MonoBehaviour
 
     public void PlayGame()
     {
-        var randomPitch = Random.Range(.98f, 1.02f);
-        _music.pitch = randomPitch;
+        // var randomPitch = Random.Range(.98f, 1.02f);
+        // _music.pitch = randomPitch;
         
-        var randomVolume = Random.Range(.20f, .25f);
+        var randomVolume = Random.Range(.15f, .2f);
         _music.volume = randomVolume;
         
         _music.clip = _game;
