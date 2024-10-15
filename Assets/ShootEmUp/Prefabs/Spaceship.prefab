@@ -84,8 +84,10 @@ MonoBehaviour:
   _missleSpawn: {fileID: 6700410976841972337}
   _missle: {fileID: 8288391238785604508, guid: 24bc6a8105d0e60408f3c38e5ea35153, type: 3}
   _rigidbody2D: {fileID: 6609864296553132160}
-  _speed: 20
+  _speed: 50
   _health: 3
+  _gameOverPage: {fileID: 0}
+  _shootDelay: 15
 --- !u!212 &3762646502595264829
 SpriteRenderer:
   m_ObjectHideFlags: 0

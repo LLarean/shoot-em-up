@@ -18,11 +18,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 355859137012655672, guid: 855f98edcc1aad54a9f41b8bd79893af, type: 3}
       propertyPath: _ySpeed
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 355859137012655672, guid: 855f98edcc1aad54a9f41b8bd79893af, type: 3}
       propertyPath: _canShoot
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 355859137012655672, guid: 855f98edcc1aad54a9f41b8bd79893af, type: 3}
+      propertyPath: _lifeTime
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 355859137012655672, guid: 855f98edcc1aad54a9f41b8bd79893af, type: 3}
       propertyPath: _maximumFireRate

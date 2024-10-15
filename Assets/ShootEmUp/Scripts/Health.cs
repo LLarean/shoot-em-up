@@ -11,7 +11,7 @@ public class Health : MonoBehaviour
         PlayerPrefs.SetInt(GlobalStrings.HealthKey, GlobalSettings.MaximumHealth);
     }
 
-    private void Update()   
+    private void Update()
     {
         var value = PlayerPrefs.GetInt(GlobalStrings.HealthKey, GlobalSettings.MaximumHealth);
         _value.text = $"{GlobalStrings.Health}{value}";

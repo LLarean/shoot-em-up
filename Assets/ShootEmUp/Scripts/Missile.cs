@@ -18,7 +18,7 @@ public class Missile : MonoBehaviour
         Destroy(gameObject, 5);
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         _rigidbody2D.velocity = new Vector2(0, _speed * _direction);
     }

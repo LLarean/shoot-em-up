@@ -11,8 +11,9 @@ public class Spaceship : MonoBehaviour
     [SerializeField] private float _speed = 1;
     [SerializeField] private int _health = 3;
     [SerializeField] private GameOverPage _gameOverPage;
-
-    private float _shootDelay = 0;
+    [SerializeField] private float _shootDelay = 0;
+    
+    private float _shootNumber = 0;
 
     public void TakeDamage()
     {
@@ -45,16 +46,16 @@ public class Spaceship : MonoBehaviour
         AudioPlayer.Instance.PlayGame();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         AddForce();
 
-        if (_shootDelay >= 30) // Input.GetKey(KeyCode.Space) == true && 
+        if (_shootNumber >= _shootDelay) // Input.GetKey(KeyCode.Space) == true && 
         {
             Shoot();
         }
 
-        _shootDelay++;
+        _shootNumber++;
     }
 
     private void AddForce()
@@ -67,7 +68,7 @@ public class Spaceship : MonoBehaviour
 
     private void Shoot()
     {
-        _shootDelay = 0;
+        _shootNumber = 0;
         Instantiate(_missle, _missleSpawn.position, Quaternion.identity);
         AudioPlayer.Instance.PlayLaser();
     }

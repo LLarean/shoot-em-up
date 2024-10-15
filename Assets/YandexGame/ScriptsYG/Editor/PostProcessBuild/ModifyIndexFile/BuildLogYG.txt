@@ -1,2 +1,2 @@
-Build path: C:/Builds/shoot-em-up/WebGL
-Build number: 1
+Build path: C:/Builds/shoot-em-up/WebGL_1.0.0.2
+Build number: 2

@@ -36,6 +36,18 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        _fireRate += Random.Range(_minimumFireRate, _maximumFireRate);
+        StartCoroutine(Shooting());
+        Destroy(gameObject, _lifeTime);
+    }
+
+    private void FixedUpdate()
+    {
+        _rigidbody2D.velocity = new Vector2(_xSpeed, -_ySpeed);
+    }
+
     private void Kill()
     {
         AssScores();
@@ -45,18 +57,6 @@ public class Enemy : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void Start()
-    {
-        _fireRate += Random.Range(_minimumFireRate, _maximumFireRate);
-        StartCoroutine(Shooting());
-        Destroy(gameObject, _lifeTime);
-    }
-
-    private void Update()
-    {
-        _rigidbody2D.velocity = new Vector2(_xSpeed, -_ySpeed);
-    }
-    
     private void AssScores()
     {
         var scores = PlayerPrefs.GetInt(GlobalStrings.ScoresKey, 0);
