@@ -34,7 +34,7 @@ public class Missile : MonoBehaviour
         }
         else
         {
-            if (other.gameObject.TryGetComponent(out Spaceship spaceship) == false) return;
+            if (other.gameObject.TryGetComponent(out Player spaceship) == false) return;
 
             spaceship.TakeDamage();
             Destroy(gameObject);

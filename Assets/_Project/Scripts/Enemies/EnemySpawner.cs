@@ -30,6 +30,16 @@ namespace Shmup.Enemies
             }
         }
 
+        private void FixedUpdate()
+        {
+            foreach (var enemy in _enemiesPull)
+            {
+                if(enemy.gameObject.activeSelf == false) continue;
+                
+                enemy.Move();
+            }
+        }
+
         private void CreateEnemy()
         {
             var newEnemy = Instantiate(_enemiesPrefabs[_level], GetRandomPosition(), Quaternion.identity);

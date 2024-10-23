@@ -30,6 +30,11 @@ public class Enemy : MonoBehaviour
     
     public EnemyType EnemyType { get; set; }
 
+    public void Move()
+    {
+        _rigidbody2D.velocity = new Vector2(_xSpeed, -_ySpeed);
+    }
+    
     public void TakeDamage()
     {
         _health--;
@@ -47,11 +52,6 @@ public class Enemy : MonoBehaviour
         // Destroy(gameObject, _lifeTime);
     }
 
-    private void FixedUpdate()
-    {
-        _rigidbody2D.velocity = new Vector2(_xSpeed, -_ySpeed);
-    }
-    
     private void AssScores()
     {
         var scores = PlayerPrefs.GetInt(GlobalStrings.ScoresKey, 0);
@@ -71,7 +71,7 @@ public class Enemy : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.TryGetComponent(out Spaceship spaceship) == true)
+        if (other.gameObject.TryGetComponent(out Player spaceship) == true)
         {
             spaceship.TakeDamage();
             Disable();
@@ -102,5 +102,4 @@ public class Enemy : MonoBehaviour
             yield return new WaitForSeconds(_fireRate);
         }
     }
-
 }

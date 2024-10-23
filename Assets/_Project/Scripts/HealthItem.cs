@@ -20,7 +20,7 @@ public class HealthItem : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.TryGetComponent(out Spaceship spaceship) == false) return;
+        if (other.gameObject.TryGetComponent(out Player spaceship) == false) return;
 
         spaceship.TakeHeal();
         Destroy(gameObject);
