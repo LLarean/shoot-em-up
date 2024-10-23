@@ -41,6 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7191312442861740847}
   - component: {fileID: 2426887641713150448}
+  - component: {fileID: 1216017952957224982}
   - component: {fileID: 3762646502595264829}
   - component: {fileID: 6609864296553132160}
   - component: {fileID: 3022241210594542388}
@@ -81,13 +82,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _explosion: {fileID: 4513247150305726348, guid: 2059dbd6f7ef5294fa44e8e656097a77, type: 3}
   _spriteRenderer: {fileID: 3762646502595264829}
-  _missleSpawn: {fileID: 6700410976841972337}
-  _missle: {fileID: 8288391238785604508, guid: 24bc6a8105d0e60408f3c38e5ea35153, type: 3}
+  _weapon: {fileID: 1216017952957224982}
   _rigidbody2D: {fileID: 6609864296553132160}
   _speed: 50
   _health: 3
   _gameOverPage: {fileID: 0}
-  _shootDelay: 15
+--- !u!114 &1216017952957224982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6631141176213012486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be9c095d6cfd47478a633e25345da855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _projectilePrefab: {fileID: 8503398085112417371, guid: 24bc6a8105d0e60408f3c38e5ea35153, type: 3}
+  _spawnPositions:
+  - {fileID: 6700410976841972337}
+  _delayShotSeconds: 1
 --- !u!212 &3762646502595264829
 SpriteRenderer:
   m_ObjectHideFlags: 0

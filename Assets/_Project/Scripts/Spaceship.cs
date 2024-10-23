@@ -1,20 +1,18 @@
 using System.Collections;
+using Shmup.Weapons;
 using UnityEngine;
 
 public class Spaceship : MonoBehaviour
 {
     [SerializeField] private Explosion _explosion;
     [SerializeField] private SpriteRenderer _spriteRenderer;
-    [SerializeField] private Transform _missleSpawn;
-    [SerializeField] private GameObject _missle;
+    [Space]
+    [SerializeField] private Weapon _weapon;
     [SerializeField] private Rigidbody2D _rigidbody2D;
     [SerializeField] private float _speed = 1;
     [SerializeField] private int _health = 3;
     [SerializeField] private GameOverPage _gameOverPage;
-    [SerializeField] private float _shootDelay = 0;
     
-    private float _shootNumber = 0;
-
     public void TakeDamage()
     {
         _health--;
@@ -44,18 +42,12 @@ public class Spaceship : MonoBehaviour
     {
         _health = GlobalSettings.MaximumHealth;
         AudioPlayer.Instance.PlayGame();
+        _weapon.Enable();
     }
-
+    
     private void FixedUpdate()
     {
         AddForce();
-
-        if (_shootNumber >= _shootDelay) // Input.GetKey(KeyCode.Space) == true && 
-        {
-            Shoot();
-        }
-
-        _shootNumber++;
     }
 
     private void AddForce()
@@ -64,13 +56,6 @@ public class Spaceship : MonoBehaviour
         var verticalForce = Input.GetAxis(GlobalStrings.Vertical);
         var newForce = new Vector2(horizontalForce * _speed, verticalForce * _speed);
         _rigidbody2D.AddForce(newForce);
-    }
-
-    private void Shoot()
-    {
-        _shootNumber = 0;
-        Instantiate(_missle, _missleSpawn.position, Quaternion.identity);
-        AudioPlayer.Instance.PlayLaser();
     }
 
     private IEnumerator BlinkDamage()

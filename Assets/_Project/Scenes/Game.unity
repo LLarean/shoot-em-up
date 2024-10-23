@@ -5531,6 +5531,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 703662897}
   m_CullTransparentMesh: 1
+--- !u!114 &847022409 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1216017952957224982, guid: 7e1ee06ef5d48bf42b052489a0cb1b23, type: 3}
+  m_PrefabInstance: {fileID: 939905369112003565}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be9c095d6cfd47478a633e25345da855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &855035294
 GameObject:
   m_ObjectHideFlags: 0
@@ -11912,6 +11923,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2426887641713150448, guid: 7e1ee06ef5d48bf42b052489a0cb1b23, type: 3}
+      propertyPath: _weapon
+      value: 
+      objectReference: {fileID: 847022409}
     - target: {fileID: 2426887641713150448, guid: 7e1ee06ef5d48bf42b052489a0cb1b23, type: 3}
       propertyPath: _explosion
       value: 

@@ -19,7 +19,7 @@ namespace Shmup.Enemies
             return this;
         }
 
-        public EnemyBuilder SetWeapon(Weapon weapon)
+        public EnemyBuilder SetWeapon()
         {
             return this;
         }
@@ -41,9 +41,5 @@ namespace Shmup.Enemies
             return instance;
         }
 
-    }
-
-    public class Weapon
-    {
     }
 }
