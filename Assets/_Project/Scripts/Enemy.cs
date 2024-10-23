@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Shmup.Enemies;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class Enemy : MonoBehaviour
 {
+    [SerializeField] private EnemyType _enemyType;
     [SerializeField] private Rigidbody2D _rigidbody2D;
     [SerializeField] private Missile _missile;
     [SerializeField] private List<Transform> _missileSpawn;
@@ -25,6 +27,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float _lifeTime;
 
     private float _fireRate;
+    
+    public EnemyType EnemyType { get; set; }
 
     public void TakeDamage()
     {
