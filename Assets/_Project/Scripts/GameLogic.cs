@@ -10,16 +10,18 @@ namespace Shmup
         [Space]
         [SerializeField] private float _spawnDelay;
 
-        private int _level;
+        private Coroutine _coroutine;
         private bool _canSpawn;
+        
+        private int _level;
 
         private void Start()
         {
             _canSpawn = true;
-            StartCoroutine(SpawnEnemy());
+            _coroutine = StartCoroutine(SpawningEnemies());
         }
 
-        private IEnumerator SpawnEnemy()
+        private IEnumerator SpawningEnemies()
         {
             while (_canSpawn == true)
             {

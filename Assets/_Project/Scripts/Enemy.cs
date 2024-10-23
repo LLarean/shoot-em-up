@@ -36,7 +36,7 @@ public class Enemy : MonoBehaviour
 
         if (_health <= 0)
         {
-            Kill();
+            Disable();
         }
     }
 
@@ -44,23 +44,14 @@ public class Enemy : MonoBehaviour
     {
         _fireRate += Random.Range(_minimumFireRate, _maximumFireRate);
         StartCoroutine(Shooting());
-        Destroy(gameObject, _lifeTime);
+        // Destroy(gameObject, _lifeTime);
     }
 
     private void FixedUpdate()
     {
         _rigidbody2D.velocity = new Vector2(_xSpeed, -_ySpeed);
     }
-
-    private void Kill()
-    {
-        AssScores();
-        Instantiate(_explosion, transform.position, Quaternion.identity);
-        CreateHealItem();
-        AudioPlayer.Instance.PlayExplosion();
-        Destroy(gameObject);
-    }
-
+    
     private void AssScores()
     {
         var scores = PlayerPrefs.GetInt(GlobalStrings.ScoresKey, 0);
@@ -72,8 +63,6 @@ public class Enemy : MonoBehaviour
     {
         var randomNumber = Random.Range(0, 100);
         
-        Debug.Log("randomNumber = " + randomNumber);
-        
         if (randomNumber <= GlobalSettings.PercentHealth)
         {
             Instantiate(_healthItem, transform.position, Quaternion.identity);
@@ -82,12 +71,23 @@ public class Enemy : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.TryGetComponent(out Spaceship spaceship) == false) return;
+        if (other.gameObject.TryGetComponent(out Spaceship spaceship) == true)
+        {
+            spaceship.TakeDamage();
+            Disable();
+        }
 
-        spaceship.TakeDamage();
-        Kill();
+        gameObject.SetActive(false);
     }
     
+    private void Disable()
+    {
+        AssScores();
+        Instantiate(_explosion, transform.position, Quaternion.identity);
+        CreateHealItem();
+        AudioPlayer.Instance.PlayExplosion();
+    }
+
     private IEnumerator Shooting()
     {
         while (_canShoot == true)
