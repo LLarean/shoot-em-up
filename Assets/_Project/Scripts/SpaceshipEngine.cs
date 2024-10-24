@@ -7,11 +7,15 @@ namespace Shmup
         [SerializeField] private Rigidbody2D _rigidbody2D;
         [SerializeField] private float _speed;
 
-        public void AddForce(Vector2 force)
+        public void SetForce()
         {
-            var xForce = force.x * _speed;
-            var yForce = force.y * _speed;
+            var horizontalForce = Input.GetAxis(GlobalStrings.Horizontal);
+            var verticalForce = Input.GetAxis(GlobalStrings.Vertical);
+
+            var xForce = horizontalForce * _speed;
+            var yForce = verticalForce * _speed;
             var newForce = new Vector2(xForce, yForce);
+            
             _rigidbody2D.AddForce(newForce);
         }
     }

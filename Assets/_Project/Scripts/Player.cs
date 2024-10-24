@@ -52,15 +52,7 @@ public class Player : MonoBehaviour
     
     private void FixedUpdate()
     {
-        AddForce();
-    }
-
-    private void AddForce()
-    {
-        var horizontalForce = Input.GetAxis(GlobalStrings.Horizontal);
-        var verticalForce = Input.GetAxis(GlobalStrings.Vertical);
-        var newForce = new Vector2(horizontalForce, verticalForce);
-        _spaceshipEngine.AddForce(newForce);
+        _spaceshipEngine.SetForce();
     }
 
     private IEnumerator BlinkDamage()
