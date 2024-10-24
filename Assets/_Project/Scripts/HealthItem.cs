@@ -1,3 +1,4 @@
+using Shmup;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -22,7 +23,7 @@ public class HealthItem : MonoBehaviour
     {
         if (other.gameObject.TryGetComponent(out Player spaceship) == false) return;
 
-        spaceship.TakeHeal();
+        // spaceship.TakeHeal();
         Destroy(gameObject);
     }
 }

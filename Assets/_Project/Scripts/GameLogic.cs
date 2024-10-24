@@ -19,8 +19,9 @@ namespace Shmup
         {
             _canSpawn = true;
             _coroutine = StartCoroutine(SpawningEnemies());
+            AudioPlayer.Instance.PlayGame();
         }
-
+        
         private IEnumerator SpawningEnemies()
         {
             while (_canSpawn == true)

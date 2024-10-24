@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using Shmup;
+using Shmup.SpaceshipComponents;
+using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class Missile : MonoBehaviour
@@ -25,19 +27,19 @@ public class Missile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (_direction == 1)
-        {
-            if (other.gameObject.TryGetComponent(out Enemy enemy) == false) return;
-        
-            enemy.TakeDamage();
-            Destroy(gameObject);
-        }
-        else
-        {
-            if (other.gameObject.TryGetComponent(out Player spaceship) == false) return;
-
-            spaceship.TakeDamage();
-            Destroy(gameObject);
-        }
+        // if (_direction == 1)
+        // {
+        //     if (other.gameObject.TryGetComponent(out Enemy enemy) == false) return;
+        //
+        //     enemy.TakeDamage();
+        //     Destroy(gameObject);
+        // }
+        // else
+        // {
+        //     if (other.gameObject.TryGetComponent(out Spaceship spaceship) == false) return;
+        //
+        //     spaceship.TakeDamage();
+        //     Destroy(gameObject);
+        // }
     }
 }

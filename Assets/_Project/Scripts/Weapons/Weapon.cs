@@ -59,6 +59,7 @@ namespace Shmup.Weapons
             else
             {
                 var newProjectile = Instantiate(_projectilePrefab, spawn.position, Quaternion.identity);
+                newProjectile.gameObject.layer = gameObject.layer;
                 newProjectile.gameObject.SetActive(true);
             }
         }
