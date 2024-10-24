@@ -1,4 +1,5 @@
 using System.Collections;
+using Shmup;
 using Shmup.Weapons;
 using UnityEngine;
 
@@ -8,31 +9,35 @@ public class Player : MonoBehaviour
     [SerializeField] private SpriteRenderer _spriteRenderer;
     [Space]
     [SerializeField] private Weapon _weapon;
-    [SerializeField] private Rigidbody2D _rigidbody2D;
-    [SerializeField] private float _speed = 1;
-    [SerializeField] private int _health = 3;
+    [SerializeField] private SpaceshipEngine _spaceshipEngine;
+    [Space]
+    [SerializeField] private int _currentHealth = 3;
+    [SerializeField] private int _maximumHealth = 3;
     [SerializeField] private GameOverPage _gameOverPage;
+    [SerializeField] private HealthBar _healthBar;
     
     public void TakeDamage()
     {
-        _health--;
-        PlayerPrefs.SetInt(GlobalStrings.HealthKey, _health);
+        _currentHealth--;
+        PlayerPrefs.SetInt(GlobalStrings.HealthKey, _currentHealth);
 
-        if (_health <= 0)
+        if (_currentHealth <= 0)
         {
             Instantiate(_explosion, transform.position, Quaternion.identity);
             _gameOverPage.Show();
             AudioPlayer.Instance.PlayExplosion();
             Destroy(gameObject);
         }
+        
+        _healthBar.UpdateValue(_currentHealth, _maximumHealth);
 
         StartCoroutine(BlinkDamage());
     }
     
     public void TakeHeal()
     {
-        _health++;
-        PlayerPrefs.SetInt(GlobalStrings.HealthKey, _health);
+        _currentHealth++;
+        PlayerPrefs.SetInt(GlobalStrings.HealthKey, _currentHealth);
         AudioPlayer.Instance.PlayHealth();
 
         StartCoroutine(BlinkHeal());
@@ -40,7 +45,7 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        _health = GlobalSettings.MaximumHealth;
+        _currentHealth = GlobalSettings.MaximumHealth;
         AudioPlayer.Instance.PlayGame();
         _weapon.Enable();
     }
@@ -54,8 +59,8 @@ public class Player : MonoBehaviour
     {
         var horizontalForce = Input.GetAxis(GlobalStrings.Horizontal);
         var verticalForce = Input.GetAxis(GlobalStrings.Vertical);
-        var newForce = new Vector2(horizontalForce * _speed, verticalForce * _speed);
-        _rigidbody2D.AddForce(newForce);
+        var newForce = new Vector2(horizontalForce, verticalForce);
+        _spaceshipEngine.AddForce(newForce);
     }
 
     private IEnumerator BlinkDamage()

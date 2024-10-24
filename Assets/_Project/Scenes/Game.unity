@@ -11923,6 +11923,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1216017952957224982, guid: 7e1ee06ef5d48bf42b052489a0cb1b23, type: 3}
+      propertyPath: _delayShotSeconds
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2278611904567650365, guid: 7e1ee06ef5d48bf42b052489a0cb1b23, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2278611904567650365, guid: 7e1ee06ef5d48bf42b052489a0cb1b23, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2426887641713150448, guid: 7e1ee06ef5d48bf42b052489a0cb1b23, type: 3}
       propertyPath: _weapon
       value: 
@@ -11939,6 +11951,10 @@ PrefabInstance:
       propertyPath: _gameOverPage
       value: 
       objectReference: {fileID: 1662352575}
+    - target: {fileID: 5952158820086635937, guid: 7e1ee06ef5d48bf42b052489a0cb1b23, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6631141176213012486, guid: 7e1ee06ef5d48bf42b052489a0cb1b23, type: 3}
       propertyPath: m_Name
       value: Spaceship

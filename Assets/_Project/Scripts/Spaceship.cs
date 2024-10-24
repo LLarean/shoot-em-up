@@ -7,6 +7,8 @@ namespace Shmup
     {
         [SerializeField] private Rigidbody2D _rigidbody2D;
         [SerializeField] private float _ySpeed;
+        [Space]
+        [SerializeField] private HealthBar _healthBar;
         
         [SerializeField] private int _health;
         
