@@ -63,30 +63,19 @@ namespace Shmup
                 Instantiate(_healthItem, transform.position, Quaternion.identity);
             }
         }
-
+        
         // private void OnCollisionEnter2D(Collision2D other)
         // {
-        //     if (other.gameObject.TryGetComponent(out Player spaceship) == true)
+        //     if (other.gameObject.TryGetComponent(out Player player) == true)
         //     {
-        //         // spaceship.TakeDamage();
         //         Disable();
         //     }
-        //
-        //     gameObject.SetActive(false);
+        //     
+        //     if (other.gameObject.TryGetComponent(out Projectile projectile) == true)
+        //     {
+        //         TakeDamage();
+        //     }
         // }
-        
-        private void OnCollisionEnter2D(Collision2D other)
-        {
-            if (other.gameObject.TryGetComponent(out Player player) == true)
-            {
-                Disable();
-            }
-            
-            if (other.gameObject.TryGetComponent(out Projectile projectile) == true)
-            {
-                TakeDamage();
-            }
-        }
     
         private void Disable()
         {

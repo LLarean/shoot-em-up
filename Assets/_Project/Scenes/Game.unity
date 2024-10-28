@@ -11959,6 +11959,10 @@ PrefabInstance:
       propertyPath: _gameOverPage
       value: 
       objectReference: {fileID: 1662352575}
+    - target: {fileID: 3022241210594542388, guid: 7e1ee06ef5d48bf42b052489a0cb1b23, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5952158820086635937, guid: 7e1ee06ef5d48bf42b052489a0cb1b23, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

@@ -12,25 +12,25 @@ namespace Shmup
             SetForce();
         }
 
-        private void OnCollisionEnter2D(Collision2D other)
-        {
-            if (other.gameObject.TryGetComponent(out HealthItem healthItem) == true)
-            {
-                AudioPlayer.Instance.PlayHealth();
-                TakeHeal();
-                StartCoroutine(BlinkHeal());
-            }
-            
-            if (other.gameObject.TryGetComponent(out Enemy enemy) == true)
-            {
-                TakeDamage();
-            }
-
-            if (other.gameObject.TryGetComponent(out Projectile projectile) == true)
-            {
-                TakeDamage();
-            }
-        }
+        // private void OnCollisionEnter2D(Collision2D other)
+        // {
+        //     if (other.gameObject.TryGetComponent(out HealthItem healthItem) == true)
+        //     {
+        //         AudioPlayer.Instance.PlayHealth();
+        //         TakeHeal();
+        //         StartCoroutine(BlinkHeal());
+        //     }
+        //     
+        //     if (other.gameObject.TryGetComponent(out Enemy enemy) == true)
+        //     {
+        //         TakeDamage();
+        //     }
+        //
+        //     if (other.gameObject.TryGetComponent(out Projectile projectile) == true)
+        //     {
+        //         TakeDamage();
+        //     }
+        // }
 
         private IEnumerator BlinkHeal()
         {
