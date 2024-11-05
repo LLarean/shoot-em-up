@@ -41,6 +41,7 @@ namespace Shmup.SpaceshipComponents
             if (other.gameObject.TryGetComponent(out Projectile projectile) == true)
             {
                 TakeDamage();
+                projectile.gameObject.SetActive(false);
             }
         }
 

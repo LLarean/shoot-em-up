@@ -6050,7 +6050,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1542219815}
   m_Layer: 0
-  m_Name: -----Environment------
+  m_Name: -----Environments------
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6952,7 +6952,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2022412671}
   m_Layer: 0
-  m_Name: -----System------
+  m_Name: -----Systems------
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
