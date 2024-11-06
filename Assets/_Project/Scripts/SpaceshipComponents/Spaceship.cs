@@ -26,7 +26,7 @@ namespace Shmup.SpaceshipComponents
 
         private void Start() => _weapon.Enable();
 
-        private void OnCollisionEnter2D(Collision2D other)
+        private void OnTriggerEnter2D(Collider2D other)
         {
             if (other.gameObject.TryGetComponent(out Player player) == true)
             {

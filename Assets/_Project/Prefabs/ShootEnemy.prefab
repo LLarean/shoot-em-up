@@ -47,14 +47,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a95b4fadd9090cc42a150ef31807aa66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosion: {fileID: 2483365738856563162, guid: 2059dbd6f7ef5294fa44e8e656097a77, type: 3}
-  _rigidbody2D: {fileID: 1094031939330542904}
+  _spriteRenderer: {fileID: 0}
+  _spaceshipEngine: {fileID: 0}
+  _healthBar: {fileID: 0}
+  _weapon: {fileID: 0}
+  _explosion: {fileID: 4513247150305726348, guid: 2059dbd6f7ef5294fa44e8e656097a77, type: 3}
+  _enemyType: 0
   _missile: {fileID: 2906256357768358959, guid: 24bc6a8105d0e60408f3c38e5ea35153, type: 3}
-  _xSpeed: 0
-  _ySpeed: 3
+  _missileSpawn: []
+  _healthItem: {fileID: 0}
   _canShoot: 1
-  _fireRate: 2
+  _minimumFireRate: 0
+  _maximumFireRate: 0
   _health: 3
+  _scores: 0
+  _lifeTime: 0
 --- !u!212 &1082327772417564577
 SpriteRenderer:
   m_ObjectHideFlags: 0
