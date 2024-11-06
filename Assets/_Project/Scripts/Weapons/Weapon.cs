@@ -9,6 +9,7 @@ namespace Shmup.Weapons
     {
         private readonly ObjectPool _objectPool = new();
         
+        [SerializeField] private string _layerName;
         [SerializeField] private Projectile _projectilePrefab;
         [SerializeField] private List<Transform> _spawnPositions;
         [SerializeField] private float _delayShotSeconds = 2f;
@@ -59,7 +60,7 @@ namespace Shmup.Weapons
             else
             {
                 var newProjectile = Instantiate(_projectilePrefab, spawn.position, Quaternion.identity);
-                newProjectile.gameObject.layer = gameObject.layer;
+                newProjectile.gameObject.layer = LayerMask.NameToLayer(_layerName);;
                 newProjectile.gameObject.SetActive(true);
             }
         }

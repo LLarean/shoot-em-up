@@ -6479,7 +6479,7 @@ GameObject:
   - component: {fileID: 1831760218}
   - component: {fileID: 1831760217}
   - component: {fileID: 1831760216}
-  m_Layer: 7
+  m_Layer: 13
   m_Name: PlayerBounds
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6694,7 +6694,7 @@ GameObject:
   - component: {fileID: 1928721441}
   - component: {fileID: 1928721440}
   - component: {fileID: 1928721439}
-  m_Layer: 8
+  m_Layer: 14
   m_Name: OtherBounds
   m_TagString: Untagged
   m_Icon: {fileID: 0}

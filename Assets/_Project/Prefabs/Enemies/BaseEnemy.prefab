@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 6334894749319962437}
   - component: {fileID: 8132750884544936786}
   - component: {fileID: 2877701068168874064}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: BaseEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,6 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be9c095d6cfd47478a633e25345da855, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _layerName: 
   _projectilePrefab: {fileID: 8503398085112417371, guid: 24bc6a8105d0e60408f3c38e5ea35153, type: 3}
   _spawnPositions:
   - {fileID: 4949185701209404325}
