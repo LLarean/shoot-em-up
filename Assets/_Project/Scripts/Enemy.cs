@@ -1,8 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Shmup.Enemies;
 using Shmup.SpaceshipComponents;
-using Shmup.Weapons;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -25,11 +25,13 @@ namespace Shmup
         [SerializeField] private float _lifeTime;
 
         private float _fireRate;
-    
+
+        public event Action<Enemy> OnDisabled;
+        
         public EnemyType EnemyType { get; set; }
 
         public void Move() => SetVelocity();
-    
+        
         public void TakeDamage()
         {
             _health--;
@@ -46,6 +48,8 @@ namespace Shmup
             StartCoroutine(Shooting());
             // Destroy(gameObject, _lifeTime);
         }
+
+        private void OnDisable() => OnDisabled?.Invoke(this);
 
         private void AssScores()
         {
@@ -64,19 +68,6 @@ namespace Shmup
             }
         }
         
-        // private void OnCollisionEnter2D(Collision2D other)
-        // {
-        //     if (other.gameObject.TryGetComponent(out Player player) == true)
-        //     {
-        //         Disable();
-        //     }
-        //     
-        //     if (other.gameObject.TryGetComponent(out Projectile projectile) == true)
-        //     {
-        //         TakeDamage();
-        //     }
-        // }
-    
         private void Disable()
         {
             AssScores();

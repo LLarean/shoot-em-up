@@ -43,6 +43,12 @@ namespace Shmup.SpaceshipComponents
                 TakeDamage();
                 projectile.gameObject.SetActive(false);
             }
+
+            if (other.gameObject.TryGetComponent(out WeaponUpgrade weaponUpgrade) == true)
+            {
+                _weapon.Upgrade();
+                weaponUpgrade.gameObject.SetActive(false);
+            }
         }
 
         private void TakeDamage()

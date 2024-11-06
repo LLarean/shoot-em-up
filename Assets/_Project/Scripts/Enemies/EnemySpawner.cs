@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Shmup.Enemies
 {
@@ -14,6 +16,8 @@ namespace Shmup.Enemies
         [SerializeField] private float _spawnMaximumX;
 
         private int _level;
+
+        public event Action<Enemy> OnEnemyDisabled;
         
         public void SetLevel(int level) => _level = level;
         
@@ -29,8 +33,8 @@ namespace Shmup.Enemies
                 CreateEnemy();
             }
         }
-
-        private void FixedUpdate()
+        
+        public void UpdatePosition()
         {
             foreach (var enemy in _enemiesPull)
             {
@@ -44,8 +48,11 @@ namespace Shmup.Enemies
         {
             var newEnemy = Instantiate(_enemiesPrefabs[_level], GetRandomPosition(), Quaternion.identity);
             newEnemy.gameObject.SetActive(true);
+            newEnemy.OnDisabled += OnEnemyDisable;
             _enemiesPull.Add(newEnemy);
         }
+
+        private void OnEnemyDisable(Enemy enemy) => OnEnemyDisabled?.Invoke(enemy);
 
         private Vector3 GetRandomPosition()
         {

@@ -16,6 +16,7 @@ namespace Shmup.Weapons
         
         private bool _canShoot;
         private Coroutine _coroutine;
+        private int _level = 1;
 
         public void Enable()
         {
@@ -33,16 +34,15 @@ namespace Shmup.Weapons
             }
         }
 
-        public void SetDelayShotSecond(float seconds) => _delayShotSeconds = seconds;
+        public void Upgrade() => _level++;
 
         private IEnumerator Shooting()
         {
             while (_canShoot == true)
             {
-                foreach (var spawn in _spawnPositions)
+                for (int i = 0; i < _level; i++)
                 {
-                    SpawnProjectile(spawn);
-                    // projectile.ChangeDirection();
+                    SpawnProjectile(_spawnPositions[i]);
                     AudioPlayer.Instance.PlayLaser();
                 }
         
