@@ -57,6 +57,8 @@ namespace Shmup.SpaceshipComponents
             {
                 StopCoroutine(_damageCoroutine);
             }
+            
+            if(gameObject.activeSelf == false) return;
 
             _damageCoroutine = StartCoroutine(Blinking());
             _healthBar.TakeDamage();

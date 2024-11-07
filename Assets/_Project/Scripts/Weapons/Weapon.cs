@@ -34,7 +34,7 @@ namespace Shmup.Weapons
             }
         }
 
-        public void Upgrade() => _level++;
+        public void Upgrade() => _level += 2;
 
         private IEnumerator Shooting()
         {
@@ -42,6 +42,8 @@ namespace Shmup.Weapons
             {
                 for (int i = 0; i < _level; i++)
                 {
+                    if (i >= _spawnPositions.Count) continue;
+                    
                     SpawnProjectile(_spawnPositions[i]);
                     AudioPlayer.Instance.PlayLaser();
                 }
