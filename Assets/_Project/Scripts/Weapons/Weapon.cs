@@ -18,6 +18,8 @@ namespace Shmup.Weapons
         private Coroutine _coroutine;
         private int _level = 1;
 
+        public int Level => _level;
+        
         public void Enable()
         {
             _canShoot = true;
@@ -36,6 +38,14 @@ namespace Shmup.Weapons
 
         public void Upgrade() => _level += 2;
 
+        public void Downgrade()
+        {
+            if (_level >= 3)
+            {
+                _level -= 2;
+            }
+        }
+        
         private IEnumerator Shooting()
         {
             while (_canShoot == true)

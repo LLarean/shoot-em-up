@@ -35,7 +35,14 @@ namespace Shmup.SpaceshipComponents
             
             if (other.gameObject.TryGetComponent(out Enemy enemy) == true)
             {
-                TakeDamage();
+                if (_weapon.Level > 1)
+                {
+                    _weapon.Downgrade();
+                }
+                else
+                {
+                    TakeDamage();
+                }
             }
             
             if (other.gameObject.TryGetComponent(out Projectile projectile) == true)
